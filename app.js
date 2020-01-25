@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
 var appInsights=require('applicationinsights');
 appInsights.setup('ff986788-1fd2-4b35-88f5-5a854bae546c');
 appInsights.start();
@@ -25,12 +26,14 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
 
-app.use('/problem',function(){throw new Error('something is wrong!')})
-
+app.use('/problem', function(){
+    throw new Error('Something is wrong!')
+  });
+  // catch 404 and forward to error handler
+  app.use(function(req, res, next) {
+    next(createError(404));
+  }); 
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

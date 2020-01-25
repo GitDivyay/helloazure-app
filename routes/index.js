@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var model={
@@ -10,5 +11,4 @@ router.get('/', function(req, res, next) {
   // res.render('index', { title: 'Azure' });
   res.render('index', model);
 });
-
 module.exports = router;
